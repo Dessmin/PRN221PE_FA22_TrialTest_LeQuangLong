@@ -31,7 +31,7 @@ namespace Candidate_DAOs
 
         public List<CandidateProfile> GetCandidates()
         {
-            return dbcontext.CandidateProfiles.Include(u=>u.Posting).ToList();
+            return dbcontext.CandidateProfiles.Include(u => u.Posting).ToList();
         }
 
         public CandidateProfile GetCandidateProfile(String id)
@@ -42,24 +42,25 @@ namespace Candidate_DAOs
         public bool AddCandidateProfile(CandidateProfile candidateProfile)
         {
             bool isSuccess = false;
-            CandidateProfile candidate = GetCandidateProfile(candidateProfile.CandidateId);
+            CandidateProfile? candidate = GetCandidateProfile(candidateProfile.CandidateId);
             if (candidate == null)
             {
                 dbcontext.CandidateProfiles.Add(candidateProfile);
                 dbcontext.SaveChanges();
+                dbcontext.Entry(candidateProfile).State = EntityState.Detached;
                 isSuccess = true;
             }
             return isSuccess;
         }
-
-        public bool DeleteCandidateProfile(String candidateId)
+        public bool DeleteCandidateProfile(string candidateID)
         {
             bool isSuccess = false;
-            CandidateProfile candidate = GetCandidateProfile(candidateId);
+            CandidateProfile? candidate = GetCandidateProfile(candidateID);
             if (candidate != null)
             {
                 dbcontext.CandidateProfiles.Remove(candidate);
                 dbcontext.SaveChanges();
+                dbcontext.Entry(candidate).State = EntityState.Detached;
                 isSuccess = true;
             }
             return isSuccess;
@@ -68,22 +69,21 @@ namespace Candidate_DAOs
         public bool UpdateCandidateProfile(CandidateProfile candidateProfile)
         {
             bool isSuccess = false;
-            CandidateProfile candidate = GetCandidateProfile(candidateProfile.CandidateId);
+            CandidateProfile? candidate = GetCandidateProfile(candidateProfile.CandidateId);
             if (candidate != null)
             {
                 // auto update cac truong ngoai tru key
-                
-                dbcontext.Entry<CandidateProfile> (candidateProfile).State 
-                    = Microsoft.EntityFrameworkCore.EntityState.Modified;
 
-                /*
-                candidate.Fullname = candidateProfile.Fullname;
-                candidate.Birthday = candidateProfile.Birthday;
-                candidate.ProfileShortDescription = candidateProfile.ProfileShortDescription;
-                candidate.ProfileUrl = candidateProfile.ProfileUrl;
-                candidate.PostingId = candidateProfile.PostingId;
-                */
+
+                //candidate.Fullname = candidateProfile.Fullname;
+                //candidate.Birthday = candidateProfile.Birthday;
+                //candidate.ProfileShortDescription = candidateProfile.ProfileShortDescription;
+                //candidate.ProfileUrl = candidateProfile.ProfileUrl;
+                //candidate.PostingId = candidateProfile.PostingId;
+
+                dbcontext.CandidateProfiles.Update(candidateProfile);
                 dbcontext.SaveChanges();
+                dbcontext.Entry(candidateProfile).State = EntityState.Detached;
                 isSuccess = true;
             }
             return isSuccess;
