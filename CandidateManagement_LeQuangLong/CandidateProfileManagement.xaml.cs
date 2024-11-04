@@ -147,7 +147,7 @@ namespace CandidateManagement_LeQuangLong
 
         private void LoadInit()
         {
-            this.dtgCandidateProfile.ItemsSource = profileService.GetCandidates().Select(a=> new {a.CandidateId,a.Fullname,a.Posting.JobPostingTitle});
+            this.dtgCandidateProfile.ItemsSource = profileService.GetCandidates().Select(a=> new {a.CandidateId,a.Fullname,a.Posting.JobPostingTitle, a.ProfileUrl});
             this.cmbJobPosting.ItemsSource = postingService.GetJobPostings();
             this.cmbJobPosting.DisplayMemberPath = "JobPostingTitle";
             this.cmbJobPosting.SelectedValuePath = "PostingId";
@@ -194,6 +194,13 @@ namespace CandidateManagement_LeQuangLong
             {
                 MessageBox.Show("Error while selecting candidate: " + ex.Message);
             }
+        }
+
+        private void jobpost_Click(object sender, RoutedEventArgs e)
+        {
+            JobPostingWindow jobPostingWindow = new JobPostingWindow();
+            jobPostingWindow.Show();
+            this.Close();
         }
     }
 }

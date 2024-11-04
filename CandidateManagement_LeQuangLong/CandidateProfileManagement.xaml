@@ -25,6 +25,7 @@
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="558,379,0,0" VerticalAlignment="Top" Height="31" Width="66" RenderTransformOrigin="-0.185,0.798" Click="btnDelete_Click" BorderBrush="White" Background="#FFD6882C" FontWeight="Bold"/>
         <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="638,379,0,0" VerticalAlignment="Top" Height="31" Width="65" RenderTransformOrigin="-0.185,0.798" Click="btnClose_Click" BorderBrush="White" Background="#FF39EDBF" FontWeight="Bold"/>
         <ComboBox x:Name="cmbJobPosting" HorizontalAlignment="Left" Margin="473,56,0,0" VerticalAlignment="Top" Width="244"/>
+        <Button x:Name="jobpost" Content="JobPosting" HorizontalAlignment="Left" Margin="44,379,0,0" VerticalAlignment="Top" Height="31" Width="100" RenderTransformOrigin="-0.185,0.798" BorderBrush="White" Background="#FF76B7F1" FontWeight="Bold" Click="jobpost_Click"/>
 
     </Grid>
 </Window>

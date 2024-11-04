@@ -5,47 +5,156 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CandidateManagement_LeQuangLong"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        Title="Product Management" Height="670" Width="710" WindowStyle="None" Loaded="Window_Loaded">
-    <Grid>
-        <Grid Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
-            </Grid.RowDefinitions>
+        Title="Job Management" 
+        Height="670" 
+        Width="710" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        Loaded="Window_Loaded">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="119.415"/>
-                <ColumnDefinition Width="30.585"/>
-                <ColumnDefinition Width="47*"/>
-                <ColumnDefinition Width="513*"/>
-            </Grid.ColumnDefinitions>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <Label x:Name="label" Content="Job Management" Grid.Column="2" Grid.Row="0" FontSize="36" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="466"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <Label x:Name="label1" Margin ="2,2,2,2"  Content="Posting ID" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtPostingID" Margin ="4,4,4,4" Grid.Column="2" Grid.Row="1" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" IsEnabled="False" />
+        <!-- Title Label -->
+        <Label Content="Job Management" 
+               FontSize="28" 
+               FontWeight="Bold" 
+               HorizontalAlignment="Center" 
+               Grid.Column="0" 
+               Grid.ColumnSpan="3" 
+               Margin="0,10,0,20"/>
 
-            <Label x:Name="label2" Margin ="2,2,2,2" Grid.Column="0" Grid.Row="2" Content="Job Posting Title" Grid.ColumnSpan="2" />
-            <TextBox x:Name="txtJobPostingTitle" Margin ="4,4,4,4" Grid.Column="2" Grid.Row="2" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" />
+        <!-- Posting ID Label and TextBox -->
+        <Label Content="Posting ID:" 
+               Grid.Row="1" 
+               Grid.Column="0" 
+               HorizontalAlignment="Right" 
+               VerticalAlignment="Center" 
+               Margin="10"/>
+        <TextBox x:Name="txtPostingID" 
+                 Grid.Row="1" 
+                 Grid.Column="2" 
+                 Margin="5"/>
 
-            <Label x:Name="label8" Margin ="2,2,2,2" Content="Description" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtDescription"  Margin ="4,4,4,4" Grid.Column="2" Grid.Row="3" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" />
+        <!-- Job Posting Title Label and TextBox -->
+        <Label Content="Job Posting Title:" 
+               Grid.Row="2" 
+               Grid.Column="0" 
+               HorizontalAlignment="Right" 
+               VerticalAlignment="Center" 
+               Margin="10"/>
+        <TextBox x:Name="txtJobPostingTitle" 
+                 Grid.Row="2" 
+                 Grid.Column="2" 
+                 Margin="5"/>
 
-            <Label x:Name="label3" Margin ="2,2,2,2" Content="Posted Date" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <!-- Description Label and TextBox -->
+        <Label Content="Description:" 
+               Grid.Row="3" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Top" 
+               Margin="0,17,0,0"/>
+        <TextBox x:Name="txtDescription" 
+                 Grid.Row="3" 
+                 Grid.Column="2" 
+                 Margin="5" 
+                 TextWrapping="Wrap" 
+                 Height="60"/>
 
-            <DataGrid x:Name="dtgJobPosting" Margin ="4,4,4,63" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" />
-            <Button  x:Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="29,365,0,0" Grid.Row="6" Width="121"  Background="#FF0099FF" BorderBrush="White" Foreground="White" Grid.ColumnSpan="3" Grid.Column="1" Click="btnCreate_Click"/>
-            <Button x:Name="btnUpdate" Content="Update" Grid.Column="3" HorizontalAlignment="Left" Margin="87,365,0,0" Grid.Row="6" Width="118" Background="#FF1B7140" Foreground="White" RenderTransformOrigin="0.37,0.2" Click="btnUpdate_Click"/>
-            <Button x:Name="btnDelete" Content="Delete" Grid.Column="3" HorizontalAlignment="Left" Margin="221,365,0,0" Grid.Row="6" Width="127" Foreground="White" Background="#FFA2AA3D" Click="btnDelete_Click"/>
-            <Button x:Name="btnClose" Content="Close" Grid.Column="3" HorizontalAlignment="Left" Margin="371,365,0,0" Grid.Row="6" Width="120" Background="#FFEF8F18" Foreground="White" Click="btnClose_Click"/>
-            <DatePicker x:Name="txtPostedDate" Grid.Column="2" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="553"/>
-        </Grid>
+        <!-- Posted Date Label and DatePicker -->
+        <Label Content="Posted Date:" 
+               Grid.Row="4" 
+               Grid.Column="0" 
+               HorizontalAlignment="Right" 
+               VerticalAlignment="Top" 
+               Margin="0,1,33,0"/>
+        <DatePicker x:Name="txtPostedDate" 
+                    Grid.Row="4" 
+                    Grid.Column="2" 
+                    Margin="5,1,5,325"/>
+
+        <!-- DataGrid for Job Postings -->
+        <DataGrid x:Name="dtgJobPosting" 
+                  Grid.Row="4" 
+                  Grid.Column="0" 
+                  Grid.ColumnSpan="3" 
+                  Margin="10,61,10,0" 
+                  AutoGenerateColumns="False" 
+                  HeadersVisibility="Column" 
+                  CanUserAddRows="False" 
+                  IsReadOnly="True" SelectionChanged="dtgJobPosting_SelectionChanged">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Posting ID" 
+                                    Binding="{Binding PostingId}" 
+                                    Width="100"/>
+                <DataGridTextColumn Header="Job Posting Title" 
+                                    Binding="{Binding JobPostingTitle}" 
+                                    Width="200"/>
+                <DataGridTextColumn Header="Description" 
+                                    Binding="{Binding Description}" 
+                                    Width="300"/>
+                <DataGridTextColumn Header="Posted Date" 
+                                    Binding="{Binding PostedDate, StringFormat=d}" 
+                                    Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Action Buttons -->
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Row="5" 
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="3" 
+                    HorizontalAlignment="Left" 
+                    Margin="77,5,0,5" Width="597">
+            <Button x:Name="btnCreate" 
+                    Content="Create" 
+                    Width="100" 
+                    Margin="10" 
+                    Background="#FF0099FF" 
+                    Foreground="White" 
+                    Click="btnCreate_Click"/>
+            <Button x:Name="btnUpdate" 
+                    Content="Update" 
+                    Width="100" 
+                    Margin="10" 
+                    Background="#FF1B7140" 
+                    Foreground="White" 
+                    Click="btnUpdate_Click"/>
+            <Button x:Name="btnDelete" 
+                    Content="Delete" 
+                    Width="100" 
+                    Margin="10" 
+                    Background="#FFA2AA3D" 
+                    Foreground="White" 
+                    Click="btnDelete_Click"/>
+            <Button x:Name="btnClose" 
+                    Content="Close" 
+                    Width="100" 
+                    Margin="10" 
+                    Background="#FFEF8F18" 
+                    Foreground="White" 
+                    Click="btnClose_Click"/>
+            <Button x:Name="btnCandidates" 
+                    Content="Candidates" 
+                    Width="100" 
+                    Margin="10" 
+                    Background="#FF007ACC" 
+                    Foreground="White" 
+                    Click="btnCandidates_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
